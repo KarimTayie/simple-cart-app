@@ -1,0 +1,14 @@
+<div class="card mb-4 text-center" style="width: 288px; height: 364px;">
+  <img class="card-img-top" src="{{ store.logo_image }}" alt="Product Image" style="height: 200px;">
+  <div class="card-body">
+    <h5 class="card-title">{{ store.name }}</h5>
+    <p class="card-text" >{{ store.description | slice:0:60 }}</p>
+    <p class="card-text" *ngFor="let address of store.addresses">
+      {{ address.unparsed }}
+    </p>
+    <!-- <p class="card-text">{{ store.addresses }}</p> -->
+    <!-- <p class="card-text">{{ product.price }}<span> EGP</span></p> -->
+    <!-- <input type="number" value="0" placeholder="0" class="mt-3 mx-auto form-control" style="width: 60px;" #pCount>
+    <button class="btn btn-primary mt-3" (click)="addToCart(pCount.value, product.price, product.name)">Add To Cart</button> -->
+  </div>
+</div>
