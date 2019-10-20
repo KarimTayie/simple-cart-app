@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SharedBootstrapModule } from './shared-bootstrap/shared-bootstrap.module';
+import { LayoutModule } from './layout/layout.module';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 export const modules = [
   CommonModule,
@@ -11,14 +13,17 @@ export const modules = [
   ReactiveFormsModule,
   RouterModule,
 
-  SharedBootstrapModule
+  SharedBootstrapModule,
+  // LayoutModule
 ];
 
-export const declarations = [];
+export const declarations = [
+  NavbarComponent
+];
 
 @NgModule({
+  declarations,
   imports: [ ...modules ],
-  exports: [ ...modules ],
-  declarations
+  exports: [ ...modules, ...declarations ],
 })
 export class SharedModule {}

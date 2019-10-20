@@ -22,6 +22,7 @@ export interface StoreItem {
       source_url: URL
     }
   ];
+  count?: number;
 }
 
 export interface StoreAddress {
