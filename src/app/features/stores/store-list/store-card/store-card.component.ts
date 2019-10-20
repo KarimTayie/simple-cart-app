@@ -16,8 +16,7 @@ export class StoreCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.store);
-    console.log(this.store.addresses);
+    // this.storesService.setStoreDate(this.store);
   }
 
 }

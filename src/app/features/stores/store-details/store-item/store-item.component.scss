@@ -1,0 +1,27 @@
+.store-item {
+  position: relative;
+
+  overflow: hidden;
+
+  &.not-available::after {
+    content: '';
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+
+    background-color: rgba($color: #000000, $alpha: .8);
+  }
+
+  .not-available-sign {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(52deg);
+    width: 200%;
+    background-color: red;
+  }
+}

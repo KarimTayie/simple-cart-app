@@ -1,0 +1,29 @@
+<section class="store-details" *ngIf="storeDetails$ | async as storeDetails">
+  <div class="container">
+
+    <div class="row">
+      <div class="card mb-4 text-center w-100">
+        <img class="card-img-top" src="{{ storeDetails.logo_image }}" alt="Product Image" style="height: 200px; width: 200px; margin: auto;;">
+        <div class="card-body">
+            <h5 class="card-title">{{ storeDetails.name }}</h5>
+            <p class="card-text" >{{ storeDetails.description | slice:0:60 }}</p>
+            <p class="card-text" *ngFor="let address of storeDetails.addresses">
+              {{ address.unparsed }}
+            </p>
+            <p class="card-text" *ngFor="let oh of storeDetails.opening_times | keyvalue">
+              {{ oh.key }}: <span *ngFor="let time of oh.value">start {{ secondsToHms(time[0]) }} end {{ secondsToHms(time[1]) }}</span>
+            </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="card-deck justify-content-center">
+        <app-store-item *ngFor="let item of storeItemsCopy" [item]="item"></app-store-item>
+      </div>
+    </div>
+      <button type="button" class="btn btn-primary m-auto d-block" (click)="seeAll()">
+        {{ showAll ? 'See less' : 'See all' }}
+      </button>
+  </div>
+</section>

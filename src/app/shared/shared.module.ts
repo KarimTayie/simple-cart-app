@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { SharedBootstrapModule } from './shared-bootstrap/shared-bootstrap.module';
+
 export const modules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
   RouterModule,
+
+  SharedBootstrapModule
 ];
 
 export const declarations = [];
