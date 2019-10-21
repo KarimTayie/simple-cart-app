@@ -13,6 +13,7 @@ export class CartService {
 
   constructor() { }
 
+  // Add to cart if passed validation method
   addToCart(productObject: StoreItem) {
     const validationFlag = this.validateProductForCart(productObject);
 
@@ -25,6 +26,7 @@ export class CartService {
 
   }
 
+  // Validation method to check if there are products from different shops/stores
   validateProductForCart(productObject: StoreItem) {
     if (this.cart.length === 0) {
       return true;
@@ -53,10 +55,7 @@ export class CartService {
   }
 
   calculateCartProdCountsAndPrice(cart: StoreItem[]): {price: number, count: number} {
-    // this.navbarCartCount += productCount;
-    // this.totalPrice += productCount * productPrice;
     return cart.reduce((total, currentValue) => {
-      // return total + currentValue.count;
       total.count += currentValue.count;
       total.price += currentValue.price_cents * currentValue.count;
       return total;
