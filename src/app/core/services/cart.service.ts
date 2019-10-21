@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { StoreItem } from 'src/app/shared/interfaces/store.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart$ = new Subject<StoreItem[] | null>();
+  private cart$ = new BehaviorSubject<StoreItem[] | null>([]);
   cart: StoreItem[] = [];
 
   constructor() { }

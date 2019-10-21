@@ -6,9 +6,10 @@ import { StoreListComponent } from './store-list/store-list.component';
 import { StoreCardComponent } from './store-list/store-card/store-card.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { StoreItemComponent } from './store-details/store-item/store-item.component';
+import { StoreCheckoutComponent } from './store-checkout/store-checkout.component';
 
 @NgModule({
   imports: [SharedModule, StoresRoutingModule],
-  declarations: [StoreListComponent, StoreCardComponent, StoreDetailsComponent, StoreItemComponent],
+  declarations: [StoreListComponent, StoreCardComponent, StoreDetailsComponent, StoreItemComponent, StoreCheckoutComponent],
 })
 export class StoresModule {}

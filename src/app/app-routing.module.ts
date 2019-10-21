@@ -10,6 +10,11 @@ export function loadStoresModule() {
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'stores'
+  },
+  {
+    path: 'stores',
     loadChildren: loadStoresModule
   }
 ];
