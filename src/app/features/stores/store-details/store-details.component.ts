@@ -36,6 +36,7 @@ export class StoreDetailsComponent implements OnInit {
       switchMap((params: ParamMap) => {
         const id = parseInt(params.get('id'), 10);
 
+        // Combining StoresDetailsObj, StoresList and id
         return forkJoin(this.storesService.fetchStoresDetails(id), this.storesService.fetchStoresList(), of(id));
       }),
       map(([storesDetails, storesList, id]) => {

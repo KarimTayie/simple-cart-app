@@ -45,6 +45,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
     }
   }
 
+  // For pagination
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
