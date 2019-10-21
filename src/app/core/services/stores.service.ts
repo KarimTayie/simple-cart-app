@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { map, flatMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+
+import { Cacheable } from 'ngx-cacheable';
 
 import { Store } from 'src/app/shared/interfaces/store.model';
 
@@ -11,13 +13,14 @@ import { Store } from 'src/app/shared/interfaces/store.model';
 })
 export class StoresService {
 
-  // storeData: Store;
+  // cached storesList data from fetchStoresList method
   storesList: Store[];
 
   constructor(
     private http: HttpClient
   ) { }
 
+  @Cacheable()
   fetchStoresList(): Observable<any> {
     return this.http.get<any>('https://api.unocart.com/api/v1/2000/groceries/shops/')
       .pipe(
@@ -30,6 +33,7 @@ export class StoresService {
       );
   }
 
+  @Cacheable()
   fetchStoresDetails(id: number): Observable<any> {
     return this.http.get<any>(`https://api.unocart.com/api/v1/6000/groceries/shops/${id}/specials/`)
       .pipe(

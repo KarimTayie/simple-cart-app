@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
+
 import { StoreItem } from 'src/app/shared/interfaces/store.model';
 
 @Injectable({
