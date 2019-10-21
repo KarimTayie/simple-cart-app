@@ -7,7 +7,7 @@ import { switchMap, map } from 'rxjs/operators';
 import { StoresService } from 'src/app/core/services/stores.service';
 import { Store, StoreItem } from 'src/app/shared/interfaces/store.model';
 
-import { secondsToHms } from '../../../shared/helpers/utils.helper';
+import { secondsToHms, trackByFn } from '../../../shared/helpers/utils.helper';
 
 @Component({
   selector: 'app-store-details',
@@ -17,6 +17,7 @@ import { secondsToHms } from '../../../shared/helpers/utils.helper';
 export class StoreDetailsComponent implements OnInit {
   storeDetails$: Observable<Store>;
   secondsToHms: (d: number) => string;
+  trackByFn: (index: any, item: any) => any;
 
   storeItems: StoreItem[];
   storeItemsCopy: StoreItem[];
@@ -29,6 +30,7 @@ export class StoreDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.secondsToHms = secondsToHms;
+    this.trackByFn = trackByFn;
 
     this.storeDetails$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
@@ -51,8 +53,6 @@ export class StoreDetailsComponent implements OnInit {
 
         this.storeItems = storesDetails;
         this.storeItemsCopy = this.storeItems.slice(0, 3);
-
-        console.log(storeDetailsObj);
 
         return storeDetailsObj;
       })

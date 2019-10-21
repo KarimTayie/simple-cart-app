@@ -11,11 +11,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of cart">
+            <tr *ngFor="let item of cart; trackBy: trackByFn;">
               <td>{{ item.name }}</td>
               <td>{{ item.count }}</td>
               <td>{{ item.price_cents / 100 | currency }} USD</td>
-              <td>{{ item.count * (item.price_cents / 100) }} USD</td>
+              <td>{{ item.count * (item.price_cents / 100) | currency }} USD</td>
             </tr>
             <tr>
               <td colspan="3">Total</td>

@@ -7,11 +7,11 @@
         <div class="card-body">
             <h5 class="card-title">{{ storeDetails.name }}</h5>
             <p class="card-text" >{{ storeDetails.description | slice:0:60 }}</p>
-            <p class="card-text" *ngFor="let address of storeDetails.addresses">
+            <p class="card-text" *ngFor="let address of storeDetails.addresses; trackBy: trackByFn;">
               {{ address.unparsed }}
             </p>
-            <p class="card-text" *ngFor="let oh of storeDetails.opening_times | keyvalue">
-              {{ oh.key }}: <span *ngFor="let time of oh.value">start {{ secondsToHms(time[0]) }} end {{ secondsToHms(time[1]) }}</span>
+            <p class="card-text" *ngFor="let oh of storeDetails.opening_times | keyvalue; trackBy: trackByFn;">
+              {{ oh.key }}: <span *ngFor="let time of oh.value; trackBy: trackByFn;">start {{ secondsToHms(time[0]) }} end {{ secondsToHms(time[1]) }}</span>
             </p>
         </div>
       </div>
@@ -19,7 +19,7 @@
 
     <div class="row justify-content-center">
       <div class="card-deck justify-content-center">
-        <app-store-item *ngFor="let item of storeItemsCopy" [item]="item"></app-store-item>
+        <app-store-item *ngFor="let item of storeItemsCopy; trackBy: trackByFn;" [item]="item"></app-store-item>
       </div>
     </div>
       <button type="button" class="btn btn-primary m-auto d-block" (click)="seeAll()">

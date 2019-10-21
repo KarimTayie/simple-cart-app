@@ -7,7 +7,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ store.name }}</h5>
     <p class="card-text" >{{ store.description | slice:0:60 }}</p>
-    <p class="card-text" *ngFor="let address of store.addresses">
+    <p class="card-text" *ngFor="let address of store.addresses; trackBy: trackByFn">
       {{ address.unparsed }}
     </p>
   </div>

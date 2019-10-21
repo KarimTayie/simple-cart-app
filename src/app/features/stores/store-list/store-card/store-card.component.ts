@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { StoresService } from '../../../../core/services/stores.service';
 import { Store } from '../../../../shared/interfaces/store.model';
+
+import { trackByFn } from '../../../../shared/helpers/utils.helper';
 
 @Component({
   selector: 'app-store-card',
@@ -11,12 +12,12 @@ import { Store } from '../../../../shared/interfaces/store.model';
 export class StoreCardComponent implements OnInit {
   @Input() store: Store;
 
-  constructor(
-    private storesService: StoresService
-  ) { }
+  trackByFn: (index: any, item: any) => any;
+
+  constructor() { }
 
   ngOnInit() {
-    // this.storesService.setStoreDate(this.store);
+    this.trackByFn = trackByFn;
   }
 
 }

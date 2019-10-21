@@ -1,13 +1,14 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 import { CartService } from 'src/app/core/services/cart.service';
 import { StoreItem } from 'src/app/shared/interfaces/store.model';
+
+import { trackByFn } from '../../../shared/helpers/utils.helper';
 
 @Component({
   selector: 'app-store-checkout',
@@ -18,8 +19,10 @@ export class StoreCheckoutComponent implements OnInit {
   @ViewChild('success', { static: false }) template: TemplateRef<any>;
   modalRef: BsModalRef;
 
+  trackByFn: (index: any, item: any) => any;
+
   // cart: StoreItem[];
-  cart$: any;
+  cart$: Observable<StoreItem[]>;
 
   constructor(
     public cartService: CartService,
@@ -28,12 +31,8 @@ export class StoreCheckoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log('test');
-    // this.cartService.getCartSubject().subscribe(
-    //   (cart) => {
-    //     this.cart = cart;
-    //   }
-    // );
+    this.trackByFn = trackByFn;
+
     this.cart$ = this.cartService.getCartSubject();
   }
 

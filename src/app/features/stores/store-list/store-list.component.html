@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="card-deck justify-content-center">
         <app-store-card
-          *ngFor="let store of returnedArray"
+          *ngFor="let store of returnedArray; trackBy: trackByFn;"
           [store]="store"></app-store-card>
       </div>
     </div>

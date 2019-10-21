@@ -1,3 +1,4 @@
+// Seconds to Hours:Minutes
 export function secondsToHms(d: number): string {
   d = Number(d);
 
@@ -8,4 +9,9 @@ export function secondsToHms(d: number): string {
   const mDisplay = m > 10 ? m : '0' + m;
 
   return hDisplay + ':' + mDisplay;
+}
+
+// ngFor performance
+export function trackByFn(index: any, item: any) {
+  return item.id;
 }
