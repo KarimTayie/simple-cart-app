@@ -57,3 +57,4 @@ $ ng serve -o
 
 3- performance code
 
+4- loading indicator
